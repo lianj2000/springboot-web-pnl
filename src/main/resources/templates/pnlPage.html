@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>PnL Page</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+     <style>
+      tr:nth-of-type(odd) {
+      background-color:#ccc;
+    }
+	</style>
+	<script src="sorttable.js"></script>
+</head>
+<body>
+    <!-- <p th:text="'Welcome, ' + ${username} + '!'" />-->
+    <script>
+      var d = new Date();
+      document.body.innerHTML = "<h4>Today's date is " + d.toDateString() + "</h4>"
+  </script>
+    
+    <h5> <p th:text="${message} +' '+ ${username} + '!'" /></h5>
+    <p><H2>PnL Page</H2></p>
+    
+         <table id="myTable" class="sortable">
+         <thead>
+          <tr>
+         	<th>Region</th>
+         	<th>TotalChange($)</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr th:each="pnl : ${pnls}" >
+         	<td th:text="${pnl.portfolio}"></td>
+     		<td th:text="${pnl.dailyTotalChange}"></td>
+     		<td>
+     			<a th:href="@{/PnLDetailsPage/{region}(region=${pnl.portfolio})}">Details</a>
+     		</td>
+         </tr>
+        </tbody>
+        </table>
+    
+</body>
+</html>

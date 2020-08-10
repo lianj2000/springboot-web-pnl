@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>PnL Detail Page</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+      tr:nth-of-type(odd) {
+      background-color:#ccc;
+    }
+	</style>
+  <script src="sorttable.js"></script>
+</head>
+<body>
+     <!-- <p th:text="'Welcome, ' + ${username} + '!'" /> -->
+     <p th:text="${message} +' '+ ${username} + '!'" />
+    <p><H2>PnL Detail Page</H2></p>
+  
+         <table id="myTable" class="sortable">
+         <thead>
+         <tr>
+         	<th>Region</th>
+         	<th>Ticker</th>
+         	<th>DailyChange($)</th>
+         	<th>Position</th>
+         	<th>Current_Price</th>
+         	<th>Pre_Close</th>
+         </tr>
+         </thead>
+         <tbody>
+         <tr th:each="pnl : ${pnldetails}" >
+         	<td th:text="${pnl.portfolio}"></td>
+     		<td th:text="${pnl.ticker}"></td>
+     		<td th:text="${pnl.dailyChange}"></td>
+     		<td th:text="${pnl.position}"></td>
+     		<td th:text="${pnl.current_price}"></td>
+     		<td th:text="${pnl.pre_close}"></td>
+         </tr>
+        </tbody>
+        
+        </table>
+     <br><br>   
+    <div><a href="../PnLsPage">Back</a></div>
+</body>
+</html>
